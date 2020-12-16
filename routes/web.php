@@ -17,5 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/pizzas', function () {
-    return view('pizzas');
+    $pizzas = [
+        ["type" => "fishy", "size" => "large", "price" => "12,000 IQ"],
+        ["type" => "fishy", "size" => "large", "price" => "12,000 IQ"],
+        ["type" => "fishy", "size" => "large", "price" => "12,000 IQ"],
+        ["type" => "fishy", "size" => "large", "price" => "12,000 IQ"],
+    ];
+    return view('pizzas', ["pizzas" => $pizzas]);
 });

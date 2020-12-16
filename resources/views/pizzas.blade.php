@@ -1,38 +1,23 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends("layouts.layout")
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <title>Laravel</title>
-</head>
+@section("content")
 
-<body class="antialiased">
-  <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-    @if (Route::has('login'))
-    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-      @auth
-      <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
-      @else
-      <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-
-      @if (Route::has('register'))
-      <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-      @endif
-      @endauth
-    </div>
-    @endif
-
-    <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-      <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-        <h1 class="text-red-400">Pizza House</h1>
-        <h2>Best Pizza in Erbil</h2>
+<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+  <div class="max-w-6xl mx-auto ">
+    <div class="flex flex-col items-center text-gray-300 justify-center pt-8 ">
+      <h1>Pizzas</h1>
+      <div class="text-gray-600 text-lg">
+        @if(count($pizzas)>0)
+        @foreach($pizzas as $pizza)
+        <p>{{$pizza["type"]}} - {{$pizza['size']}} - {{$pizza["price"]}}</p>
+        @endforeach
+        @else
+        <h3 class="text-xl">You don't ordered any pizza</h3>
+        @endif
       </div>
 
     </div>
   </div>
-  </div>
-</body>
-
-</html>
+</div>
+</div>
+@endsection
