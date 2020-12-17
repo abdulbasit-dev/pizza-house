@@ -8,6 +8,8 @@
         <div class="flex flex-col items-center text-gray-300 justify-center pt-8 ">
             <img src="/images/pizza-house.png" alt="">
             <h2 class="title">The Best Pizza in the Erbil</h2>
+            <p>{{session("message")}}</p>
+            <a href="/pizzas/create" class="text-gray-300">Order a Pizza</a>
         </div>
     </div>
 </div>

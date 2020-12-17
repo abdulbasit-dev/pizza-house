@@ -1,15 +1,23 @@
-@extends("layouts.layout")
+@extends('layouts.layout')
 
-@section("content")
+@section('content')
+<div class="wrapper pizza-details">
+    <h1>Order for {{ $pizza->name }}</h1>
+    <p class="type">Type - {{ $pizza->type }}</p>
+    <p class="base">Base - {{ $pizza->base }}</p>
+    <p class="toppings">Extra toppings:</p>
+    <ul>
+        @foreach($pizza->toppings as $topping)
+        <li>{{ $topping }}</li>
+        @endforeach
+    </ul>
 
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-  <div class="max-w-6xl mx-auto ">
-    <div class="flex flex-col items-center text-gray-300 justify-center pt-8 ">
+    <form action="/pizzas/{{$pizza->id}}" method="POST">
+        @csrf
+        @method("DELETE")
+        <button type="submit">Complete Order</button>
+    </form>
 
-      <h1 class="title">Pizza List - {{$id}}</h1>
-    </div>
-  </div>
 </div>
-</div>
-
-@endsection
+<a href="/pizzas" class="back">
+    <- Back to all pizzas</a> @endsection
