@@ -2,11 +2,15 @@
 
 @section('content')
 <div class="wrapper pizza-index">
+    @if(count($pizzas)>0)
     <h1>Pizza Orders</h1>
+    @else
+    <h1>There is no Orders</h1>
+    @endif
     @foreach($pizzas as $pizza)
     <div class="pizza-item">
         <img src="img/pizza.png" alt="pizza icon">
-        <h4><a href="/pizzas/{{ $pizza->id }}">{{ $pizza->name }}</a></h4>
+        <h4><a href={{route("pizzas.show",$pizza->id)}}>{{ $pizza->name }}</a></h4>
     </div>
     @endforeach
 
