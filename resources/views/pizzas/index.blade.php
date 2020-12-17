@@ -9,7 +9,7 @@
       <div class="text-gray-600 text-lg">
         @if(count($pizzas)>0)
         @foreach($pizzas as $pizza)
-        <p>{{$pizza["type"]}} - {{$pizza['size']}} - {{$pizza["price"]}}</p>
+        <p>{{$loop->index+1 }} {{$pizza["name"]}} - {{$pizza['type']}} - {{$pizza["base"]}}</p>
         @endforeach
         @else
         <h3 class="text-xl">You don't ordered any pizza</h3>
